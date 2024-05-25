@@ -8,21 +8,23 @@ Backtesting Results:
 
 - Initial Equity ~ $100,000.00 
 - Trade Period ~ 01/01/2022 - 01/01/2024 
-- Final Equity ~ $132,646.90
-- Fees ~ $35.66
-- Holdings ~ $120,648.74
-- Net Profit ~ $16,045.14
-- PSR ~ 42.499%
-- Return ~ 32.65 %
+- Final Equity ~ $91,993.64
+- Fees ~ -$50.90
+- Holdings ~ $91,450.70
+- Net Profit ~ $-15,297.16
+- PSR ~ 1.296%
+- Return ~ -8.01 %
+
+As you have noticed this strategy did not do as well, this is mainly because 2022 and 2023 were years with major fluctuations and this bot does not have a concrete Stop Loss and Take Profit parameters set.
 
 
 How it works:
 
-1. In this case the algorithm trades 90% of its wallet (100,000) into the chosen equity QQQ
-2. Once the order is filled, it adds a Stop Loss 5% below the entry price and a Take Profit 5% above the entry price
-3. If the active trade is not closed within 24 hours of entry, the Stop Loss and Take Profit are modified to 5% below and 5% above the price at the current time.
-4. Order is closed once the Take Profit or Stop Loss is hit.
-5. Please refer to my comments in the code for a line-by-line understanding
+1. We will be using a custom SMA (Simple Moving Average) indicator and 52-Week High and Low for our trading strategy
+2. We will define an uptrend when the current price is above the SMA and is close to the 52-Week high, 5% below the 52-Week High
+3. Downtrend is when the current price is below the SMA and it is close to the 52-Week Low, 5% above the 52-Week Low
+4. Once our Algorithms see that it is an uptrend it will take a Buy position and vice versa for a downtrend
+5. It will then close open positions if none of the conditions are met or if the price hits the 52-Week High and 52-Week Low 
 
 A QuantConnect Account will help! But if you have your backtesting methods, go ahead.
 
